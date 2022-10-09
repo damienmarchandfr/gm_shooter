@@ -8,6 +8,7 @@ if(self.image_alpha <= 1){
 
 if(place_meeting(self.x,self.y,obj_bullet)){
 	self.dead = true;
+	player.score+=10;
 	// Destroy the bullet
 	var _inst = instance_place(self.x, self.y, obj_bullet);
 	if _inst != noone

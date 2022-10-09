@@ -16,6 +16,4 @@ if(self.image_xscale == 1){
 		self.spawn_timer = 0;
 		instance_create_layer(self.x,self.y,"Instances",obj_small_enemy);
 	}
-	
-
 }
