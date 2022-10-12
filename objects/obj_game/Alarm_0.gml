@@ -1,3 +1,6 @@
+if(!self.spwan_enemy){
+	return
+}
 var max_spawn_x = room_width;
 var max_spawn_y = room_height;
 
