@@ -7,19 +7,19 @@ self.gun.y = self.y;
 var collision_points = [
 	{
 		x: self.x,
-		y: self.y + sprite_height/4
+		y: self.y + abs(sprite_height)/4 - 5
 	},
 	{
-		x: self.x + sprite_width / 4,
-		y: self.y + sprite_height / 3
+		x: self.x + abs(sprite_width) / 4,
+		y: self.y + abs(sprite_height) / 3 - 5
 	},
 	{
 		x: self.x,
-		y: self.y + sprite_height /3
+		y: self.y + abs(sprite_height) /3
 	},
 	{
-		x: self.x - sprite_width / 4,
-		y: self.y + sprite_height / 3
+		x: self.x - abs(sprite_width) / 4,
+		y: self.y + abs(sprite_height) / 3 - 5
 	}
 ];
 
@@ -94,18 +94,33 @@ for(var i=0;i<array_length(collision_points);i++){
 	}
 }
 
-
+var y_speed = 0;
+var x_speed = 0;
 
 if(self.move_up && self.can_move_up){
-	self.y -= self.move_speed;
+	y_speed = -self.move_speed;
 }
 if(self.move_right && self.can_move_right){
-	self.x += self.move_speed;
+	x_speed = self.move_speed;
 }
 if(self.move_down && self.can_move_down){
-	self.y += self.move_speed
+	y_speed = self.move_speed
 }
 if(self.move_left && self.can_move_left){
-	self.x -= self.move_speed;
+	x_speed = -self.move_speed;
 }
+
+// Diagonal ?
+var diag_move = y_speed != 0 && x_speed != 0;
+
+if(diag_move){
+	x_speed = round(x_speed * ((sqrt(2)) / 2));
+	y_speed = round(y_speed * ((sqrt(2)) / 2));
+}
+
+self.x += x_speed;
+self.y += y_speed;
+
+
+
 
