@@ -121,6 +121,14 @@ if(diag_move){
 self.x += x_speed;
 self.y += y_speed;
 
-
+// Bonus collision
+if(place_meeting(self.x,self.y,obj_bonus)){
+	self.move_speed += obj_bonus.speed_bonus;
+	self.gun.firing_interval -= obj_bonus.firing_bonus;
+	
+	if(self.gun.firing_interval <= 0){
+		self.gun.firing_interval = 1;
+	}
+}
 
 
